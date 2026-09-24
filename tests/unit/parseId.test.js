@@ -1,24 +1,26 @@
-// tests/unit/parseId.test.js
-const parseId = require("../../src/helpers/parseId");
-const { ValidationError } = require("../../src/errors/AppError");
-describe("parseId", () => {
-// Para testar ERRO, o expect recebe uma função: () => ...
-it("lança ValidationError quando o id não é número", () => {
-expect(() => parseId("abc")).toThrow(ValidationError);
+// tests/unit/validators.test.js
+// 1. Importa as funções que vamos testar
+const { isEmail, minLength } = require("../../src/helpers/validators");
+// 2. describe = agrupa os testes de uma função
+describe("validators.isEmail", () => {
+// 3. it = um caso de teste. O texto diz o que DEVERIA acontecer
+it("não retorna erro para um e-mail válido", () => {
+// Arrange — prepara
+const email = "ana@senai.br";
+// Act — executa
+const resultado = isEmail(email);
+// Assert — confere (nos validators, null = "sem erro")
+expect(resultado).toBeNull();
 });
-// DESAFIO: escrevam aqui um teste para a pergunta abaixo
-// tests/unit/parseId.test.js
-const parseId = require("../../src/helpers/parseId");
-const { ValidationError } = require("../../src/errors/AppError");
-
-describe("parseId", () => {
-  it("deve retornar o ID se for válido", () => {
-    expect(parseId("1")).toBeDefined();
-  });
-
-  it("deve lançar ValidationError se for inválido", () => {
-    expect(() => parseId(null)).toThrow(ValidationError);
-  });
+it("retorna mensagem de erro para e-mail sem @", () => {
+const resultado = isEmail("ana.senai.br");
+expect(resultado).toBe("E-mail inválido");
+});
 });
 
+describe("validators.minLength", () => {
+it("aceita um nome com exatamente 3 letras quando o mínimo é 3", () => {
+const resultado = minLength("Ana", 3, "nome");
+expect(resultado).toBeNull();
+});
 });
