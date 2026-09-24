@@ -19,8 +19,7 @@ expect(resultado).toBe("E-mail inválido");
 });
 
 describe("validators.minLength", () => {
-it("aceita um nome com exatamente 3 letras quando o mínimo é 3", () => {
-const resultado = minLength("Ana", 3, "nome");
-expect(resultado).toBeNull();
+it("Borda", () => {
+expect(minLength("An", 3, "nome")).toBe("Erro de tamanho minimo");
 });
 });
