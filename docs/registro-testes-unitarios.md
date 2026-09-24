@@ -28,5 +28,5 @@ Obtido: O teste falhou
 
 ## Cobertura
 
-% Lines da linha "helpers": 44.44
-Em uma frase, o que esse número significa: Os testes criados executaram e validaram apenas 44.44% das linhas de código reais que existem dentro da pasta *helpers*.
+% Lines da linha "helpers": 33.33
+Em uma frase, o que esse número significa: Os testes cobrem apenas 33.33 das linhas da pasta *helpers*.
